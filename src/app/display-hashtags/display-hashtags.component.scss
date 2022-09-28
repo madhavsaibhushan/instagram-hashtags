@@ -1,0 +1,28 @@
+.container{
+    padding: 2rem;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    margin-bottom: 0rem;
+  color: whitesmoke;
+  border-radius: 2%;
+  border: 1px solid grey;
+  width: 87vw;
+  height: 60%;
+  margin: 25px;
+  max-height: 700px;
+  overflow: scroll;
+
+}
+.tags{
+    padding: 5px;
+    margin: 2px;
+}
+
+:host ::ng-deep .p-button{
+  margin-bottom:3px !important
+}
+
+:host ::ng-deep .p-togglebutton.p-button.p-highlight{ 
+  background: #FA7070 !important;
+  border-color: #FA7070 ;
+  color: #ffffff;
+}

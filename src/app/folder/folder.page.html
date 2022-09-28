@@ -1,21 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+<div  id="container">
+
+  <p-dataView [value]="hashtags"
+  #dv   [rows]="9" filterBy="title"
+  layout="grid"
+  >
+    <ng-template pTemplate="header">
+    
+    <div class="grid text-center">
+      <div class="col-12">
+        <span class="p-input-icon-left ">
+          <input type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
+        </span>
+      </div>
+     
+    </div>
+    </ng-template>
+ 
+    <ng-template let-product pTemplate="gridItem">
+      <div class="col-12 md:col-4 purple" pRipple  (click)="routeToDisplayHashtags(product)">
+        <div class="product-grid-item card mb-1" >
+            <div class="product-grid-item-top">
+                <div>
+                    <i class="pi pi-tag product-category-icon"></i>
+                    <!-- <span class="product-category">#{{product.title}}</span> -->
+                </div>
+            </div>
+            <div class="product-grid-item-content">
+                <div class="product-name">#{{product.title}}</div>
+                <div class="product-description">{{product.category}}</div>
+            </div>
+            
+        </div>
+    </div>
+    </ng-template>
+  
+  </p-dataView>
+</div>

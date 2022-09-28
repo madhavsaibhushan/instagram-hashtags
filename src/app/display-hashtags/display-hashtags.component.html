@@ -1,0 +1,16 @@
+<div class="container" *ngIf="data.text">
+    <span *ngFor="let hashtag of data?.text" class="tags ">
+        <p-toggleButton [onLabel]="hashtag.tagName" [offLabel]="hashtag.tagName"
+            (onChange)="handleChange($event,hashtag)" [(ngModel)]="hashtag.isChecked">
+        </p-toggleButton>
+    </span>
+</div>
+<div class="grid">
+    <div class="col-3">
+        <button pButton type="button" label="Copy All" class="p-button-outlined" (click)="copyAll(data.text)"></button>
+    </div>
+    <div class="col-3">
+        <button pButton type="button" label="Copy selected" class="p-button-outlined" (click)="copyToClipBoard()"></button>
+
+    </div>
+</div>

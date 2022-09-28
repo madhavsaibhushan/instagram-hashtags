@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { tags } from 'src/assets/json/hastag';
+import { AdMob } from '@admob-plus/ionic/ngx';
 
 @Component({
   selector: 'app-folder',
@@ -7,12 +9,29 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./folder.page.scss'],
 })
 export class FolderPage implements OnInit {
-  public folder: string;
-
-  constructor(private activatedRoute: ActivatedRoute) { }
+  hashtags = tags
+  constructor(private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private admob: AdMob
+  ) { }
 
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+    this.setAdmobOptions()
   }
 
+  async setAdmobOptions() {
+    const banner = new this.admob.BannerAd({
+      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+    });
+    console.log(banner)
+
+    await banner.show();
+    console.log(banner)
+    this.admob.on('admob.banner.impression').subscribe(async () => {
+      await banner.hide();
+    });
+  }
+  routeToDisplayHashtags(data) {
+    this.router.navigate(['display-hashtags'], { state: { data: data } })
+  }
 }

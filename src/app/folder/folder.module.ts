@@ -7,14 +7,26 @@ import { IonicModule } from '@ionic/angular';
 import { FolderPageRoutingModule } from './folder-routing.module';
 
 import { FolderPage } from './folder.page';
-
+import { DataViewModule } from 'primeng/dataview';
+import { InputTextModule } from 'primeng/inputtext';
+import { RippleModule } from 'primeng/ripple';
+import { DisplayHashtagsComponent } from '../display-hashtags/display-hashtags.component';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ButtonModule } from 'primeng/button';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule
+    FolderPageRoutingModule,
+    DataViewModule,
+    InputTextModule,
+    RippleModule,
+    ToggleButtonModule,
+    ButtonModule
+
+
   ],
-  declarations: [FolderPage]
+  declarations: [FolderPage, DisplayHashtagsComponent]
 })
-export class FolderPageModule {}
+export class FolderPageModule { }
